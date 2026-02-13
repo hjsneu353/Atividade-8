@@ -1,0 +1,109 @@
+### API de Gerenciamento de Usuários - Requisições de Teste
+### Use este arquivo com extensões como REST Client no VS Code
+
+### 1. Health Check
+GET http://localhost:3000/health
+
+###
+
+### 2. Listar todos os usuários
+GET http://localhost:3000/api/users
+
+###
+
+### 3. Cadastrar usuário - Sucesso
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "João da Silva",
+  "email": "joao@email.com",
+  "age": 25
+}
+
+###
+
+### 4. Cadastrar outro usuário
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Maria Santos",
+  "email": "maria@email.com",
+  "age": 30
+}
+
+###
+
+### 5. Cadastrar usuário - Email duplicado (deve falhar)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "João Duplicado",
+  "email": "joao@email.com",
+  "age": 28
+}
+
+###
+
+### 6. Cadastrar usuário - Nome muito curto (deve falhar)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Jo",
+  "email": "jo@email.com",
+  "age": 20
+}
+
+###
+
+### 7. Cadastrar usuário - Email inválido (deve falhar)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Carlos Silva",
+  "email": "email-invalido",
+  "age": 35
+}
+
+###
+
+### 8. Cadastrar usuário - Idade inválida (deve falhar)
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "name": "Pedro Costa",
+  "email": "pedro@email.com",
+  "age": 200
+}
+
+###
+
+### 9. Buscar usuário por ID (substitua :id pelo ID real)
+GET http://localhost:3000/api/users/1
+
+###
+
+### 10. Buscar usuário - ID inexistente (deve retornar 404)
+GET http://localhost:3000/api/users/999
+
+###
+
+### 11. Remover usuário (substitua :id pelo ID real)
+DELETE http://localhost:3000/api/users/1
+
+###
+
+### 12. Remover usuário - ID inexistente (deve retornar 404)
+DELETE http://localhost:3000/api/users/999
+
+###
+
+### 13. Rota não encontrada (deve retornar 404)
+GET http://localhost:3000/rota-invalida
+
+###
